@@ -45,17 +45,17 @@ func (o *Woodman) Name() string {
 
 //LogDebug ...
 func (o *Woodman) LogDebug(args ...interface{}) {
-	go o.logger.Debugln(args)
+	o.logger.Debugln(args)
 }
 
 //LogInfo ...
 func (o *Woodman) LogInfo(args ...interface{}) {
-	go o.logger.Infoln(args)
+	o.logger.Infoln(args)
 }
 
 //LogError ...
 func (o *Woodman) LogError(args ...interface{}) {
-	go o.logger.Errorln(args)
+	o.logger.Errorln(args)
 }
 
 //NewDefaultLogger because log is dependency
@@ -75,6 +75,13 @@ func NewLumberjackLogger(filename string, maxsize, maxbackup, maxage int) *log.L
 		MaxBackups: maxbackup, //number
 		MaxAge:     maxage,    //days
 	}
+	logger.Formatter = &log.JSONFormatter{}
+	return logger
+}
+
+//NewJSONLogger for JSON stdout
+func NewJSONLogger() *log.Logger {
+	logger := NewDefaultLogger()
 	logger.Formatter = &log.JSONFormatter{}
 	return logger
 }
