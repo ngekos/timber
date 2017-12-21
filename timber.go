@@ -3,7 +3,7 @@ package timber
 import (
 	"os"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 )
 
